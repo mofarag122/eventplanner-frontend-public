@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { environment } from '../../environments/environment.development';
 
 type LoginResponse = {
   access_token: string;
@@ -78,7 +79,7 @@ export type Guest = {
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private readonly apiBase = 'http://localhost:8080/api/v1';
+  private readonly apiBase = environment.apiUrl;
   readonly accessToken = signal<string | null>(this.getStoredToken());
 
   constructor() {
